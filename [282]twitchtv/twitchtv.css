@@ -1,0 +1,46 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration:none;
+	color:#422B63;
+}
+html{
+	background-color: #463265;
+}
+ul>li{
+	list-style: none;
+}
+
+#channelList{
+	width: 60%;
+	height: auto;
+	margin: 0 auto;
+	background: #FA8B60;
+	padding: 5px;
+
+}
+#channelList li{
+	width: 100%;
+	background:#8CC2A5;
+	margin: 5px 0;
+}
+#channelList li a{
+	display: flex;
+}
+.pic{
+	flex: 1
+}
+.name{
+	flex: 1;
+}
+.status{
+	flex: 2;
+}
+.pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 5px solid #422B63;
+}
