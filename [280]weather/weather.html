@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Show Local Weather
+</title> 
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="weather.js"></script>
+</head>
+<body>
+	<table ng-app="weather"  ng-controller="weather">
+	 <th>
+	 	<td>中山天气</td>
+	 </th>
+	 <tr>
+	 	<td>城市：</td>
+	 	<td>{{weather.today.city}}</td>
+	 </tr>
+	 <tr>
+	 	<td>日期</td>
+	 	<td>{{weather.today.date_y}}{{weather.tody.week}}</td>
+	 </tr>
+		<tr>
+			<td>天气：</td>
+			<td>{{weather.today.weather}}</td>
+		</tr>
+		<tr>
+			<td>温度：</td>
+			<td>{{weather.today.temperature}}</td>
+		</tr>
+		<tr>
+			<td>风向&风力：</td>
+			<td>{{weather.today.wind}}</td>
+		</tr>
+		<tr>
+			<td>穿衣建议</td>
+			<td>{{weather.today.dressing_advice}}</td>
+		</tr>
+
+	</table>
+</body>
+</html>
