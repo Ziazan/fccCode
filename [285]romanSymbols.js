@@ -1,3 +1,8 @@
+/*
+将给定的数字转换成罗马数字。
+
+所有返回的 罗马数字 都应该是大写形式。
+*/
 function convert(num) {
   var factor = 1;
   var remainder = 0;
