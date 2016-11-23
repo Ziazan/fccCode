@@ -1,0 +1,14 @@
+.container{
+	width: 100%;
+	height: 100%;
+}
+.quote-box{
+	width: 300px;
+	padding: 20px 0;
+	text-align: center;
+	margin: 0 auto;
+}
+.quote{
+	display: inline-block;
+	color:#000;
+}
