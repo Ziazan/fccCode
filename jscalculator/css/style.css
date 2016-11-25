@@ -1,0 +1,103 @@
+.float-lf {
+  float: left;
+}
+.dsp-inl {
+  display: inline-block;
+}
+.box-shadow {
+  color: #f938ab;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+html {
+  height: 100%;
+  font-family: "微软雅黑";
+}
+body {
+  background-color: #212121;
+  width: 100%;
+  height: 100%;
+}
+/*.wrap{
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+.cell{
+ display: table-cell;
+ vertical-align: middle;
+}*/
+.container {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 667px;
+  margin: 0 auto;
+  display: block;
+  background: -prefix-linear-gradient(to bottom right, #2BC8FF, #D789FF);
+  background: linear-gradient(to bottom right, #2BC8FF, #D789FF);
+  color: white;
+  overflow: hidden;
+}
+.inputView {
+  width: 100%;
+  height: 25%;
+  border-bottom: 1px solid white;
+  font-size: 40px;
+  text-align: right;
+}
+.formula {
+  height: 50%;
+  line-height: 200%;
+  font-size: 60px;
+}
+.result {
+  height: 50%;
+  line-height: 200%;
+}
+.btns-box {
+  height: 75%;
+  width: 100%;
+}
+.btnBox-lf {
+  height: 100%;
+  width: 75%;
+  float: left;
+}
+.btnBox-lf ul {
+  width: 100%;
+  height: 100%;
+}
+.btnBox-lf li {
+  display: inline-block;
+  width: 33%;
+  height: 25%;
+  text-align: center;
+  line-height: 125.0625px;
+  font-weight: bold;
+  font-size: 40px;
+  cursor: pointer;
+}
+.btnBox-rt {
+  height: 100%;
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.btnBox-rt ul {
+  height: 100%;
+  width: 100%;
+}
+.btnBox-rt ul li {
+  width: 100%;
+  height: 100.05px;
+  line-height: 100.05px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
