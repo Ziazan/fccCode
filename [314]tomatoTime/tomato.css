@@ -1,0 +1,12 @@
+
+.btn{
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	border:1px solid #000;
+}
+.time{
+	display: inline-block;
+}

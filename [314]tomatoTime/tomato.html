@@ -2,15 +2,18 @@
 <html>
 <head>
 	<title>Tomato Clock</title> 
+	<link rel="stylesheet" type="text/css" href="tomato.css">
 	<script type="text/javascript" src="tomato.js"></script>
 </head>
 <body>
-	<div class="time" id='time'>
-		1
+	<div class="container">
+		<div class="btn btn-subtract" id="btn-subtract">-</div>
+		<div class="time" id='time'>1</div>
+		<div class="btn btn-add" id="btn-add">+</div>
+		<div class="btn" id='play'>play</div>
+		<div class="clock" id='clock'>
+			<span id="minutes">00</span>:<span id="seconds">00</span>
+		</div>		
 	</div>
-	<div class="clock" id='clock'>
-		<span id="minutes">00</span>:<span id="seconds">00</span>
-	</div>
-
 </body>
 </html>

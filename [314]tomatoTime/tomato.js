@@ -1,3 +1,12 @@
+var tomato = {
+	workTime:0,
+	restTime:0,
+	addWorkTime:function(){
+
+	}
+
+}
+
 window.onload = function(){
 	var time = document.getElementById('time');
 	var clock = document.getElementById('clock');
@@ -13,6 +22,30 @@ window.onload = function(){
 			clearInterval(start);
 		}
 	},100);
+
+	var addBtn = document.getElementById('btn-add');
+	var subBtn = document.getElementById('btn-subtract');
+
+	addBtn.addEventListener('click',function(event) {
+		setTime('time',1);
+	});
+	subBtn.addEventListener('click', function(event){
+		setTime('time',-1);
+	});
+
+}
+
+
+//设置时间，flag:1,flag:-1
+function setTime(ele,flag){
+	var time = document.getElementById(ele);
+	time.innerText = parseInt(time.innerText) + flag;
+	if(time.innerText < 0){
+		time.innerText = 0;
+	}
+	
+	
+
 }
 
 //检查显示格式
