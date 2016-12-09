@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>Tomato Clock</title> 
 	<link rel="stylesheet" type="text/css" href="tomato.css">
-	<script type="text/javascript" src="tomato.js"></script>
+	<!-- <script type="text/javascript" src="tomato.js"></script> -->
 </head>
 <body>
 	<div class="container">
-		<div class="btn btn-subtract" id="btn-subtract">-</div>
-		<div class="time" id='time'>1</div>
-		<div class="btn btn-add" id="btn-add">+</div>
-		<div class="btn" id='play'>play</div>
+		<div class="btn-box">
+			<p>休息时间</p>
+			<span class="btn" id='res_sub'>-</span><span class="setTime" id="restTime">0</span><span class="btn" id='res_add'>+</span>
+		</div>
+		<div class="btn-box">
+			<p>工作时间</p>
+			<span class="btn" id='wk_sub'>-</span><span class='setTime' id='workTime'>0</span><span class="btn" id="wk_add">+</span>
+		</div>
 		<div class="clock" id='clock'>
-			<span id="minutes">00</span>:<span id="seconds">00</span>
+			<div class="circle" id="circle"></div>
+			<span id='timeTitle' class="timeTitle">SESSION</span>
+			<p id='time'>0:00</p>
 		</div>		
 	</div>
+
+<!-- 	
+	<p id='timeTitle'></p>
+	<span id="time">00:00</span>
+	<br>
+	<button id="toggle">Toggle timer</button> -->
 </body>
+<script type="text/javascript" src="tomato.js"></script>
 </html>
