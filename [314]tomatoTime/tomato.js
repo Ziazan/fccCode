@@ -2,8 +2,8 @@
 	function Tomato(wkTime,rstTime){
 		this.wkTime = wkTime;
 		this.rstTime = rstTime;
-		// this.wkRamaining = this.wkTime;
-		// this.rstRamaining = this.rstTime
+		this.wkRamaining = this.wkTime;
+		this.rstRamaining = this.rstTime
 		this.remaining = this.wkTime;
 		this.init = function(){
 		}
@@ -27,7 +27,6 @@
 
 		}
 	}
-
 	Tomato.prototype = {
 		isRunning: function(){
 			return this.isWorking() || this.isResting();
@@ -40,25 +39,38 @@
 		},
 		startWork:function(){//开始工作
 			if(this.isWorking()) return;
-			this.remaining = this.wkTime;
-			this.changeTitle("现在是工作时间");
+			this.remaining = this.wkRamaining;
+			this.changeTitle("WORK!!");
 			this.lastTime = Date.now();
 			this.workTimer = setInterval(this.update.bind(this,0),1000);
 		},
-		startRest:function(){//开始休息
+		startRest:function(time){//开始休息
 			if(this.isResting()) return;
-			this.remaining = this.rstTime;
-			this.changeTitle("现在是休息时间");
+			this.remaining = this.rstRamaining;
+			this.changeTitle("BREAKO(∩_∩)O~");
 			this.lastTime = Date.now();
 			this.RestTimer = setInterval(this.update.bind(this,1),1000);
 		},
-		start:function(){
-			this.startWork();
-			// this.startRest();
+		stop:function(){
+			if(this.isWorking()){
+				clearInterval(this.workTimer);
+				this.workTimer = null;
+			}
+			if(this.isResting()){
+				clearInterval(this.RestTimer);
+				this.RestTimer = null;
+			}
+
 		},
+		//0:工作时间 1：休息时间
 		update:function(flag){//更新时间
 			var delta = Date.now() - this.lastTime;
 			this.remaining = Math.max(0,this.remaining - delta/1000/60);
+			if(flag){
+				this.rstRamaining= this.remaining;
+			}else{
+				this.wkRamaining = this.remaining;
+			}
 			this.lastTime = Date.now();
 			this.onUpdate();
 			this.setRemaining(flag,200);
@@ -66,13 +78,9 @@
 				if(flag){
 					clearInterval(this.RestTimer);
 					this.RestTimer = null;
-					console.log('flag:',flag);
 				}else{
 					clearInterval(this.workTimer);
 					this.workTimer = null;
-					console.log('flag:',flag);
-
-
 				}
 			}
 		},
@@ -84,14 +92,18 @@
 				return String(minutes) + ':' + ('00' + seconds).slice(-2);
 		}
 	}
-
-	var t = new Tomato(1,1);
+	//工作时间，休息时间
+	var t = new Tomato(25,5);
 	t.onUpdate = function (){
 		document.getElementById('time').innerHTML = this.toString();
 	}
 	t.init = function (){
+		this.remaining = this.wkTime;
+		this.wkRamaining = this.wkTime;
+		this.rstRamaining = this.rstTime;
 		document.getElementById('workTime').innerHTML = this.wkTime;
 		document.getElementById('restTime').innerHTML = this.rstTime;
+		this.onUpdate();
 	}
 	t.changeTitle = function(title){
 		if(this.isRunning){
@@ -103,35 +115,36 @@
 	t.changeTime = function(num,flag){
 		if(this.isRunning()) return;
 			if(flag){
-				var resTime = document.getElementById('restTime');
 				this.rstTime += num;
 				if(this.rstTime < 1){
 					this.rstTime = 0;
 				}
-				resTime.innerHTML = this.rstTime;
 			}else{
-				var wkTime = document.getElementById('workTime');
 				this.wkTime  += num;
 				if(this.wkTime < 1){
 					this.wkTime = 0;
 				}
-				wkTime.innerHTML = this.wkTime;
 			}
+			this.init();
 		}
 	t.setRemaining = function(flag, height){
 		var circle = document.getElementById('circle');
 		var time = flag?this.rstTime:this.wkTime;
 		var bgColor = flag?'#FF4444':'#99CC00';
 		var clipH = Math.floor((1 - this.remaining / time)*height);
-		console.log(time, bgColor, clipH);
 		circle.style.clip = 'rect('+clipH+'px,auto,auto,auto)';
 		circle.style.backgroundColor = bgColor;
 	}
 	document.getElementById('clock').addEventListener('click', function(){
+		if(t.isRunning()){
+			t.stop();
+			return;
+		}
 		var clock = document.getElementById('time');
 		t.startWork();
 		var a = setInterval(function(){
-			if(t.isWorking()) return;
+			if(t.wkRamaining > 0) return;
+			t.remaining = t.rstTime;
 			t.startRest();
 			clearInterval(a);
 		},1000);

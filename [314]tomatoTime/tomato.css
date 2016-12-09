@@ -12,10 +12,17 @@ html{
 	font-size: 10px;
 	color:#fff;
 }
-.container{
-	width: 500px;
-	margin: 0 auto;
+h1{
+	width: 100%;
+	font-family: 'Pacifico';
+	text-align: center;
 	margin-top: 100px;
+	font-size: 10rem;
+}
+.container{
+	width: 280px;
+	margin: 0 auto;
+	
 }
 
 .clock{
@@ -25,9 +32,18 @@ html{
 	border-radius:100px;
 	border:2px solid #99CC00;
 	text-align: center;
-	line-height: 100px;
+	/*line-height: 100px;*/
 	font-size: 4rem;
 	position: relative;
+}
+.clock p{
+	line-height: 100px;
+}
+.clock span{
+	margin-top: 40px;
+	display: inline-block;
+	font-size: 3rem;
+	font-weight: bold;
 }
 .circle{
 	width: 190px;
@@ -56,6 +72,10 @@ html{
 	line-height: 50px;
 	font-size: 3rem;
 	margin-right: 50px;
+	text-align: center;
+}
+.btn-box p{
+	font-size: 1.6rem;
 }
 .btn{
 	height: 30px;
