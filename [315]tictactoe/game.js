@@ -1,3 +1,8 @@
+/*
+computer:叉,user:圈
+*/
+
+
 var winKey = [
 	[0,1,2],//横
 	[3,4,5],
@@ -8,40 +13,32 @@ var winKey = [
 	[0,4,8], //斜
 	[2,4,6]
 ];
-var status = [0,0,0,0,0,0,0,0,0]; //都为0
-console.log(status);
-
-
-$(function(){
-	$('.col').on('click', function(event){
-		ripper(event, $(this), 15, 2);
-		//画画
-		draw(0,$(this));
-	});
-});
-
-
 
 //初始化函数
 function init(){
-	
 }
 
 
 //点击画圈或叉
 //flag  0:圈 1：叉
 function draw(flag, ele){
-	// if($(ele).children('.icon').length){
-	// 	return;
-	// }
+	//当前位置上有棋子
+	if($(ele).children('.icon').length){
+		return;
+	}
+	console.log(status);
 	var idx = (/\d/g.exec($(ele).attr('id')))[0]; //获取下标
-	console.log(idx,status,status[idx]);
-	if(status[idx] === 1) {return; }//当前位置上有棋子
+	
+	if(status[idx] !== undefined) {
+		console.log(status[idx]);
+		return; 
+	}//当前位置上有棋子
 
 	var name = flag? 'cross':'circle';
 	var image = $('<div class="icon icon-' + name +'"></div>');
 	$(ele).append(image);
-	status[idx] = 1; //当前格子有棋子
+	status[idx] = flag; //当前格子有棋子
+	console.log(idx,status,status[idx]);
 }
 
 //点击的水波纹效果
@@ -58,6 +55,22 @@ function ripper(event, ele, radius, time){
 	setTimeout(function(){
 		ripper.remove();
 	},time *1000);
+}
 
+//是不是赢了，谁赢
+function isWin(){
 	
 }
+
+//初始化
+$(function(){
+	init();
+	$('.col').on('click', function(event){
+		ripper(event, $(this), 15, 2);
+		//画画
+		draw(0,$(this));
+	});
+	console.log(status);
+
+});
+
